@@ -1,22 +1,22 @@
-<h1>Proposed Items (Stillwater Manor)</h1>
+<h1>Stillwater Manor</h1>
 
-<table>
-  <tr>
+<h2>Proposed Items</h2>
+<table cellspacing="10">
+  <tr align="left">
     <th>Title</th>
     <th>Cost</th>
     <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th colspan="2" align="center">Actions</th>
   </tr>
 
 <% @items.each do |item| %>
   <tr>
     <td><%= link_to item.title, item %></td>
     <td>$<%= number_with_precision(item.cost, :precision => 0) %></td>
-    <td><%= item.description %></td>
-        <td>[<%= link_to 'Edit', edit_item_path(item) %>]</td>
-        <td>[<%= link_to 'Delete', item, confirm: 'Are you sure?', method: :delete %>]</td>
+    <td><%= truncate(item.description, :length => 300) %></td>
+
+    <td><font size=-2><%= link_to 'Edit', edit_item_path(item) %></font></td>
+    <td><font size=-2><%= link_to 'Delete', item, confirm: 'Are you sure?', method: :delete %></font></td>
   </tr>
 <% end %>
 </table>
@@ -24,3 +24,8 @@
 <br />
 
 <%= link_to 'Propose a New Item for Vote', new_item_path %>
+
+<h2>Approved Items</h2>
+<h2>Rejected Items</h2>
+
+<a href=="#">View Archive</a>
