@@ -1,7 +1,11 @@
 ManorApp::Application.routes.draw do
+  resources :units
+
   get "home/index"
 
-  resources :items
+  resources :items do
+    resources :votes
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

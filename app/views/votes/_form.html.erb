@@ -1,0 +1,33 @@
+<%= form_for([@item, @vote]) do |f| %>
+  <% if @vote.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@vote.errors.count, "error") %> prohibited this vote from being saved:</h2>
+
+      <ul>
+      <% @vote.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <p>
+      <b>Item:</b>
+      <%= @item.title %>
+    </p>
+    <%= f.hidden_field :item_id, :value => @item.id %>
+
+    <p>
+      <b>Unit:</b>
+      <%= @unit.number %>
+    </p>
+    <%= f.hidden_field :unit_id, :value => @unit.id %>
+
+    <div class="field">
+      <%= f.label :choice %><br />
+      <%= f.check_box :choice %>
+    </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

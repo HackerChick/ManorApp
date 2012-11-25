@@ -1,29 +1,32 @@
-<h2>Proposed Items</h2>
-<table cellspacing="10">
-  <tr align="left">
-    <th>Title</th>
-    <th>Cost</th>
-    <th>Description</th>
-    <th colspan="2" align="center">Actions</th>
-  </tr>
-
 <% @items.each do |item| %>
-  <tr>
-    <td><%= link_to item.title, item %></td>
-    <td>$<%= number_with_precision(item.cost, :precision => 0) %></td>
-    <td><%= truncate(item.description, :length => 300) %></td>
+<div class="item">
+  <table>
+    <tr>
+      <td><%= link_to item.title, item %></td>
+      <td>$<%= number_with_precision(item.cost, :precision => 0) %></td>
+      <td><%= truncate(item.description, :length => 300) %></td>
 
-    <td><font size=-2><%= link_to 'Edit', edit_item_path(item) %></font></td>
-    <td><font size=-2><%= link_to 'Delete', item, confirm: 'Are you sure?', method: :delete %></font></td>
-  </tr>
-<% end %>
+      <td><font size=-2><%= link_to 'Edit', edit_item_path(item) %></font></td>
+      <td><font size=-2><%= link_to 'Delete', item, confirm: 'Are you sure?', method: :delete %></font></td>
+    </tr>
+    <% item.votes.each do |vote| %>
+        <% if !vote.choice.nil? %>
+            <tr>
+              <td colspan="5"><li>Unit <%= vote.unit.number %>: <%= vote.choice ? 'Yes' : 'No' %></li></td>
+            </tr>
+        <% end %>
+    <% end %>
+    <tr>
+      <td colspan="5"><%= link_to 'Vote Yes', new_item_vote_path(:item_id=>item, :choice=>1) %> |
+        <%= link_to 'Vote No', new_item_vote_path(:item_id=>item, :choice=>0 ) %> |
+        Clear Vote</td>
+    </tr>
 </table>
+</div>
+<% end %>
 
 <br />
 
-<%= link_to 'Propose a New Item for Vote', new_item_path %>
+<p><%= link_to 'Propose a New Item for Vote', new_item_path %></p>
 
-<h2>Approved Items</h2>
-<h2>Rejected Items</h2>
-
-<a href=="#">View Archive</a>
+<p><a href=="#">View Archive</a></p>

@@ -1,0 +1,21 @@
+<h1>Listing votes</h1>
+
+<table>
+  <tr>
+    <th>Item</th>
+    <th>Unit</th>
+    <th>Choice</th>
+    <th></th>
+  </tr>
+
+<% @votes.each do |vote| %>
+  <tr>
+    <td><%= vote.item.title %></td>
+    <td><%= vote.unit.number %></td>
+    <td><%= vote.choice %></td>
+    <td><font size=-2><%= link_to 'Edit', edit_item_vote_path(vote.item,vote) %></font></td>
+  </tr>
+  <% end %>
+</table>
+
+<br />
