@@ -49,6 +49,10 @@ h2 {
   color: #393937;
 }
 
+ul{
+  line-height: .5em;
+}
+
 .title_image{
   border: 1px solid #7589a0;
   margin-top: 1px;
@@ -61,7 +65,23 @@ h2 {
 .item{
   background: #d9dde2;
   width: 800px;
-  margin-bottom: 7px;
+  padding: 1px 10px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.item_title{
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.item_votes{
+}
+
+.item_actions{
+  position: absolute;
+  right: 10px;
+  bottom: 1px;
 }
 
 .action_links{
