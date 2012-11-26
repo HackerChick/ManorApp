@@ -44,7 +44,8 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
+        # TODO: highlight item that was just edited
+        format.html { redirect_to items_url }
         format.json { render json: @item, status: :created, location: @item }
       else
         format.html { render action: "new" }
@@ -60,7 +61,8 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.update_attributes(params[:item])
-        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
+        # TODO: highlight item that was just edited
+        format.html { redirect_to items_url }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
