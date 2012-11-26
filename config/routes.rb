@@ -1,4 +1,6 @@
 ManorApp::Application.routes.draw do
+  resources :sessions
+  resources :users
   resources :units
 
   get "home/index"
