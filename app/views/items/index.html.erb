@@ -1,4 +1,4 @@
-<h2 xmlns="http://www.w3.org/1999/html">Items</h2>
+<h1>Items</h1>
 <% @items.each do |item| %>
 <div class="item">
   <p><%= link_to item.title, item, :class=>"item_title" %> ($<%= number_with_precision(item.cost, :precision => 0) %>)<br>
@@ -7,9 +7,9 @@
 
   <% item.votes.each do |vote| %>
       <ul>
-      <% if !vote.choice.nil? %>
-          <li>Unit <%= vote.unit.number %>: <%= vote.choice ? 'Yes' : 'No' %></li></td>
-      <% end %>
+        <% if !vote.choice.nil? %>
+            <li>Unit <%= vote.unit.number %>: <%= vote.choice ? 'Yes' : 'No' %></li></td>
+        <% end %>
       </ul>
   <% end %>
 

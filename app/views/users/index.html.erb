@@ -6,7 +6,6 @@
     <th>Unit</th>
     <th>Email</th>
     <th>Username</th>
-    <th>Password digest</th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,10 +14,20 @@
 <% @users.each do |user| %>
   <tr>
     <td><%= user.name %></td>
-    <td><%= user.unit_id %></td>
+
+    <td>
+      <% i = 0 %>
+      <% user.units.each do |unit|  %>
+          <% i += 1 %>
+          <% if i > 1 %>
+              ,
+          <% end %>
+          <%= unit.number %>
+      <% end %>
+    </td>
+
     <td><%= user.email %></td>
     <td><%= user.username %></td>
-    <td><%= user.password_digest %></td>
     <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
     <td><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %></td>

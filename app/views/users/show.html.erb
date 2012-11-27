@@ -7,7 +7,15 @@
 
 <p>
   <b>Unit:</b>
-  <%= @user.unit_id %>
+
+  <% i = 0 %>
+  <% @user.units.each do |unit|  %>
+      <% i += 1 %>
+      <% if i > 1 %>
+          ,
+      <% end %>
+      <%= unit.number %>
+  <% end %>
 </p>
 
 <p>
@@ -18,11 +26,6 @@
 <p>
   <b>Username:</b>
   <%= @user.username %>
-</p>
-
-<p>
-  <b>Password digest:</b>
-  <%= @user.password_digest %>
 </p>
 
 
