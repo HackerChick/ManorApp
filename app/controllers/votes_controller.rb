@@ -1,16 +1,9 @@
 class VotesController < ApplicationController
   before_filter :get_item
-  before_filter :get_unit
 
   def get_item
     @item = Item.find(params[:item_id])
   end
-
-  def get_unit
-    # TODO Replace with logged in user's unit
-    @unit = Unit.find(1)
-  end
-
 
   # GET /items/1/votes
   # GET /items/1//votes.json
@@ -37,8 +30,10 @@ class VotesController < ApplicationController
   # GET /items/1/votes/new
   # GET /items/1/votes/new.json
   def new
-    @vote = Vote.find_or_create_by_item_id_and_unit_id(@item.id, @unit.id)
-    @vote.update_attributes( :choice => params[:choice] )
+    current_user.units.each do |unit|
+      @vote = Vote.find_or_create_by_item_id_and_unit_id(@item.id, unit.id)
+      @vote.update_attributes( :choice => params[:choice] )
+    end
 
     respond_to do |format|
       format.html { redirect_to items_path, notice: 'Vote was successfully created.' }
