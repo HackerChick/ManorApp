@@ -16,7 +16,7 @@
   <div class="item_votes">
     <%= link_to 'Vote Yes', new_item_vote_path(:item_id=>item, :choice=>1) %> |
     <%= link_to 'Vote No', new_item_vote_path(:item_id=>item, :choice=>0 ) %> |
-    Clear Vote
+    <%= link_to 'Clear Vote', new_item_vote_path(:item_id=>item ) %>
   </div>
   <div class="item_actions">
   <%= link_to 'Edit', edit_item_path(item) %> | <%= link_to 'Delete', item, confirm: 'Are you sure?', method: :delete %>

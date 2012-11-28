@@ -31,8 +31,13 @@ class VotesController < ApplicationController
   # GET /items/1/votes/new.json
   def new
     current_user.units.each do |unit|
-      @vote = Vote.find_or_create_by_item_id_and_unit_id(@item.id, unit.id)
-      @vote.update_attributes( :choice => params[:choice] )
+      if :choice.nil?
+        vote = Vote.find_by_item_id_and_unit_id(@item.id, unit.id)
+        vote.destroy if !vote.nil?
+      else
+        vote = Vote.find_or_create_by_item_id_and_unit_id(@item.id, unit.id)
+        vote.update_attributes( :choice => params[:choice] )
+      end
     end
 
     respond_to do |format|
