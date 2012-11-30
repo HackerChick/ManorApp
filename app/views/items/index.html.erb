@@ -1,7 +1,11 @@
 <h1>Items</h1>
 <% @items.each do |item| %>
 <div class="item">
-  <p><%= link_to item.title, item, :class=>"item_title" %> ($<%= number_with_precision(item.cost, :precision => 0) %>)<br>
+  <p><%= link_to item.title, item, :class=>"item_title" %>
+    <% if !item.cost.nil? %>
+        ($<%= number_with_precision(item.cost, :precision => 0) %>)
+        <% end %>
+    <br>
   <%= truncate(item.description, :length => 300) %>
   </p>
 
