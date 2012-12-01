@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b><%= @item.title %></b><br>
+  <%= @comment.text %>
+</p>
+
+<p>
+  -- <%= @comment.user.name %>, <%= @comment.datetime.strftime('%m/%d/%Y')%>
+</p>
+
+
+<%= link_to 'Edit', edit_item_comment_path(@item,@comment) %> |
+<%= link_to 'Back', items_path %>

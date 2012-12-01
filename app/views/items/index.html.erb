@@ -12,7 +12,7 @@
   <% item.votes.each do |vote| %>
       <ul>
         <% if !vote.choice.nil? %>
-            <li>Unit <%= vote.unit.number %>: <%= vote.choice ? 'Yes' : 'No' %></li></td>
+            <li>Unit <%= vote.unit.number %>: <%= vote.choice ? 'Yes' : 'No' %></li>
         <% end %>
       </ul>
   <% end %>
@@ -20,13 +20,25 @@
   <div class="item_votes">
     <%= link_to 'Vote Yes', new_item_vote_path(:item_id=>item, :choice=>1) %> |
     <%= link_to 'Vote No', new_item_vote_path(:item_id=>item, :choice=>0 ) %> |
-    <%= link_to 'Clear Vote', new_item_vote_path(:item_id=>item ) %>
+    <%= link_to 'Clear Vote', new_item_vote_path(:item_id=>item ) %> |
+    <%= link_to 'Comment', new_item_comment_path(item) %>
   </div>
   <div class="item_actions">
-  <%= link_to 'Edit', edit_item_path(item) %> | <%= link_to 'Delete', item, confirm: 'Are you sure?', method: :delete %>
+    <%= link_to 'Edit', edit_item_path(item) %> | <%= link_to 'Delete', item, confirm: 'Are you sure?', method: :delete %>
   </div>
-
 </div>
+
+
+<% item.comments.each do |comment| %>
+  <div class="item_comment">
+    <div class="item_comment_username"><%=  comment.user.name %>:</div> <%=  comment.text %>
+    <div class="item_comment_actions">
+      <%= link_to 'Edit', edit_item_comment_path(item, comment) %> | <%= link_to 'Delete', item_comment_path(item,comment), confirm: 'Are you sure?', method: :delete %>
+    </div>
+  </div>
+<% end %>
+
+
 <% end %>
 
 <br />

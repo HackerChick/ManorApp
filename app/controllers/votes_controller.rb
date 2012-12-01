@@ -33,7 +33,7 @@ class VotesController < ApplicationController
     current_user.units.each do |unit|
       if :choice.nil?
         vote = Vote.find_by_item_id_and_unit_id(@item.id, unit.id)
-        vote.destroy if !vote.nil?
+        vote.destroy if !vote.nil? # TODO: Move this to destroy!
       else
         vote = Vote.find_or_create_by_item_id_and_unit_id(@item.id, unit.id)
         vote.update_attributes( :choice => params[:choice] )
