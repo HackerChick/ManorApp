@@ -32,9 +32,6 @@
 <% item.comments.each do |comment| %>
   <div class="item_comment">
     <div class="item_comment_username"><%=  comment.user.name %>:</div> <%=  comment.text %>
-    <div class="item_comment_actions">
-      <%= link_to 'Edit', edit_item_comment_path(item, comment) %> | <%= link_to 'Delete', item_comment_path(item,comment), confirm: 'Are you sure?', method: :delete %>
-    </div>
   </div>
 <% end %>
 
