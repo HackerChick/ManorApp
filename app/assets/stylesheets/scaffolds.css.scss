@@ -57,10 +57,6 @@ h1 {
   color: #393937;
 }
 
-ul{
-  line-height: .5em;
-}
-
 .title_image{
   border: 1px solid #7589a0;
   margin-top: 1px;
@@ -84,9 +80,15 @@ ul{
 }
 
 .item_votes{
-  font-size: 11px;
+  li{
+    font-size: 12px;
+    line-height: 1.2em;
+  }
 }
 
+.item_vote_actions{
+  font-size: 11px;
+}
 .item_actions{
   font-size: 11px;
   position: absolute;
