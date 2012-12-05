@@ -1,7 +1,7 @@
 <h1>Items</h1>
-<div class="action_links"><%= link_to 'Propose a New Item for Vote', new_item_path %></div>
+<div class="list_action_links"><%= link_to 'Propose a New Item for Vote', new_item_path %></div>
 
 <% @items.each do |item| %>
-      <%=  render item %>
+    <%=  render item %>
 <% end %>
 

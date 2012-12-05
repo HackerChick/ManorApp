@@ -89,6 +89,7 @@ h1 {
 .item_vote_actions{
   font-size: 11px;
 }
+
 .item_actions{
   font-size: 11px;
   position: absolute;
@@ -114,10 +115,12 @@ h1 {
   vertical-align: center;
 }
 
-.action_links{
+.list_action_links{
   font-size: 15px;
   font-weight: bold;
-  margin: 15px 0 0 0;
+  width: 800px;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 
 /*
