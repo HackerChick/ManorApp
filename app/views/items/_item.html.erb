@@ -5,7 +5,12 @@
         ($<%= number_with_precision(item.cost, :precision => 0) %>)
     <% end %><br>
 
-    <%= truncate(item.description, :length => 300) %>
+    <% summary = 0 unless (defined? summary) %>
+    <% if summary == 1 %>
+        <%= truncate(item.description, :length => 300) %>
+    <% else %>
+        <%=  simple_format(item.description) %>
+    <% end %>
   </p>
 
   <% if item.votes.any? %>
