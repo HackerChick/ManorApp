@@ -1,38 +1,7 @@
 <h1>Items</h1>
+<div class="action_links"><%= link_to 'Propose a New Item for Vote', new_item_path %></div>
+
 <% @items.each do |item| %>
-    <div class="item">
-      <p><%= link_to item.title, item, :class=>"item_title" %>
-        <% if !item.cost.nil? %>
-            ($<%= number_with_precision(item.cost, :precision => 0) %>)
-        <% end %>
-        <br>
-        <%= truncate(item.description, :length => 300) %>
-      </p>
-
-      <% if item.votes.any? %>
-          <div class="item_votes">
-            <ul>
-              <%=  render item.votes %>
-            </ul>
-          </div>
-      <% end %>
-
-      <div class="item_vote_actions">
-        <%= link_to 'Yes', new_item_vote_path(:item_id=>item, :choice=>1 ) %> |
-        <%= link_to 'No', new_item_vote_path(:item_id=>item, :choice=>0 ) %> |
-        <%= link_to 'Clear Vote', new_item_vote_path(:item_id=>item ) %> |
-        <%= link_to 'Comment', new_item_comment_path(item) %>
-      </div>
-      <div class="item_actions">
-        <%= link_to 'Edit', edit_item_path(item) %> | <%= link_to 'Delete', item, confirm: 'Are you sure?', method: :delete %>
-      </div>
-    </div>
-
-    <% if item.comments.any? %>
-        <%=  render item.comments %>
-    <% end %>
-
+      <%=  render item %>
 <% end %>
 
-<br />
-<p class="action_links"><%= link_to 'Propose a New Item for Vote', new_item_path %></p>
