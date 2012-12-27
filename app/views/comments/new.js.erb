@@ -1,0 +1,3 @@
+var comment_form = $('<%= j(render(:partial => "form"))%>');
+
+$('div.new_comment_'+ <%= @item.id %>).html(comment_form);

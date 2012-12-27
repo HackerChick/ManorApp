@@ -25,7 +25,7 @@
     <%= link_to 'Yes', new_item_vote_path(:item_id=>item, :choice=>1 ) %> |
     <%= link_to 'No', new_item_vote_path(:item_id=>item, :choice=>0 ) %> |
     <%= link_to 'Clear Vote', new_item_vote_path(:item_id=>item ) %> |
-    <%= link_to 'Comment', new_item_comment_path(item) %>
+    <%= link_to 'Comment', new_item_comment_path(item), :remote => true %>
   </div>
 
   <div class="item_actions">
@@ -34,8 +34,9 @@
 
 </div>
 
-
 <% if item.comments.any? %>
     <%= render item.comments %>
 <% end %>
+<div class="new_comment_<%=  item.id %>"></div>
+
 
