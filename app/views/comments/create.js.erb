@@ -1,0 +1,7 @@
+// If a comment was added, display it
+<% if !@comment.nil? %>
+  $("#comments_<%= @item.id %>").append("<%= j(render(@comment)) %>");
+<% end %>
+
+// clear out the new comment box
+$('div.new_comment_'+ <%= @item.id %>).html("");

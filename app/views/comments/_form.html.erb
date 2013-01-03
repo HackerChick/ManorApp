@@ -1,4 +1,4 @@
-<%= form_for([@item,@comment]) do |f| %>
+<%= form_for([@item,@comment], :remote=>true, :html => { :id=>"new_comment_#{@item.id}"}) do |f| %>
   <% if @comment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
@@ -15,15 +15,20 @@
   <%= f.hidden_field :user_id, :value => current_user.id %>
 
   <div class="field">
-    <%= f.text_area :text, :cols => 113, :rows=>3 %>
+    <%= f.text_area :text, :cols => 113, :rows=>3, :class=>"comment_text_#{@item.id}" %>
   </div>
-<% end %>
 
-<script>
-    $('textarea#comment_text').keypress(function(e) {
-        if (e.keyCode == 13 && !e.shiftKey) {
-            e.preventDefault();
-            this.form.submit();
-        }
-    });
-</script>
+  <script>
+      // move focus to comments
+      $(".comment_text_<%= @item.id %>").focus();
+
+      // submit when user presses return
+      $('textarea#comment_text').keypress(function(e) {
+          if (e.keyCode == 13 && !e.shiftKey) {
+              e.preventDefault();
+              $("#new_comment_<%= @item.id %>").submit();
+          }
+      });
+  </script>
+
+<% end %>
