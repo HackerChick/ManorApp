@@ -15,12 +15,12 @@
   <%= f.hidden_field :user_id, :value => current_user.id %>
 
   <div class="field">
-    <%= f.text_area :text, :cols => 113, :rows=>3, :class=>"comment_text_#{@item.id}" %>
+    <%= f.text_area :text, :cols => 113, :rows=>3 %>
   </div>
 
   <script>
       // move focus to comments
-      $(".comment_text_<%= @item.id %>").focus();
+      $("#new_comment_<%= @item.id %> #comment_text").focus();
 
       // submit when user presses return
       $('textarea#comment_text').keypress(function(e) {
