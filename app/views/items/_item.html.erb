@@ -1,4 +1,4 @@
-<div class="item">
+<div class="item" id="item_<%= item.id %>"
 
   <p><%= link_to item.title, item, :class=>"item_title" %>
     <% if !item.cost.nil? %>
@@ -14,7 +14,7 @@
   </p>
 
   <% if item.votes.any? %>
-      <div class="item_votes_<%=  item.id %>">
+      <div class="item_votes">
         <ul>
           <%=  render :partial => item.votes %>
         </ul>
@@ -34,10 +34,10 @@
 
 </div>
 
-<div id="comments_<%=  item.id %>">
+<div class="comments_<%= item.id %>">
 <% if item.comments.any? %>
     <%= render item.comments %>
 <% end %>
 </div>
-<div class="new_comment_<%=  item.id %>"></div>
+<div class="new_comment_<%= item.id %>"></div>
 
