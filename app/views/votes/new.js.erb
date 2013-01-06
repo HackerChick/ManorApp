@@ -1,0 +1,8 @@
+<% if @item.votes.any? %>
+var votes = "<ul><%= j(render(@item.votes)) %></ul>"
+<% else %>
+  var votes = "";
+<% end %>
+
+$(".item_votes_<%= @item.id %>").html(votes);
+

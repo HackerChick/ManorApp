@@ -14,17 +14,17 @@
   </p>
 
   <% if item.votes.any? %>
-      <div class="item_votes">
+      <div class="item_votes_<%=  item.id %>">
         <ul>
-          <%=  render item.votes %>
+          <%=  render :partial => item.votes %>
         </ul>
       </div>
   <% end %>
 
   <div class="item_vote_actions">
-    <%= link_to 'Yes', new_item_vote_path(:item_id=>item, :choice=>1 ) %> |
-    <%= link_to 'No', new_item_vote_path(:item_id=>item, :choice=>0 ) %> |
-    <%= link_to 'Clear Vote', new_item_vote_path(:item_id=>item ) %> |
+    <%= link_to 'Yes', new_item_vote_path(:item_id=>item, :choice=>1 ), :remote => true %> |
+    <%= link_to 'No', new_item_vote_path(:item_id=>item, :choice=>0 ), :remote => true %> |
+    <%= link_to 'Clear Vote', new_item_vote_path(:item_id=>item ), :remote => true %> |
     <%= link_to 'Comment', new_item_comment_path(item), :remote => true %>
   </div>
 
